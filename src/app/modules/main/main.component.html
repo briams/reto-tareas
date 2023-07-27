@@ -1,12 +1,16 @@
-<nav class="navbar navbar-light bg-light px-5 py-4">
-  <div class="container">
+<div class="container">
+  <nav class="navbar navbar-light bg-light px-5 py-4">
     <div class="container-fluid">
       <span class="navbar-text mb-0"
         >Usuario: {{ userSession.lastname + ", " + userSession.name }}</span
       >
+
+      <button class="btn btn-link" type="button" (click)="closeSession()">
+        Cerrar Sesion
+      </button>
     </div>
-  </div>
-</nav>
+  </nav>
+</div>
 <div class="container px-5 py-4">
   <router-outlet></router-outlet>
 </div>

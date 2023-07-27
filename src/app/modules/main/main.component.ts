@@ -13,4 +13,8 @@ export class MainComponent {
   constructor(private sessionSvc: SessionService) {
     this.userSession = this.sessionSvc.getSession();
   }
+
+  closeSession() {
+    this.sessionSvc.clearSession();
+  }
 }
