@@ -1,0 +1,46 @@
+<h2>Lista de tareas</h2>
+<div>
+  <form class="d-flex gap-3 align-self-center" [formGroup]="form">
+    <div class="form-floating mb-4">
+      <input
+        type="text"
+        id="formJob"
+        class="form-control"
+        formControlName="jobs"
+      />
+      <label for="formJob">Usuario</label>
+    </div>
+    <div class="ml-4 mt-2">
+      <button class="btn btn-outline-primary" (click)="onSubmit()">
+        Agregar
+      </button>
+    </div>
+  </form>
+</div>
+
+<div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let job of listJobs">
+      <div class="d-flex align-items-center gap-3">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          [checked]="job.isSelected"
+          id="flexCheckDefault"
+          (click)="changeSelected(job.id)"
+        />
+        <span class="flex-grow-1">
+          {{ job.name }}
+        </span>
+        <button
+          *ngIf="!job.isSelected"
+          type="button"
+          class="btn btn-link"
+          (click)="deleteJob(job.id)"
+        >
+          borrar
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>

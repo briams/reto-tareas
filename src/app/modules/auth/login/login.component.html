@@ -1,0 +1,53 @@
+<form class="card p-5" [formGroup]="loginForm">
+  <h4 class="mt-1 mb-5 pb-1">Login</h4>
+
+  <!-- Email input -->
+  <div class="form-floating mb-4">
+    <input
+      type="email"
+      id="formUser"
+      class="form-control"
+      formControlName="username"
+      [class.is-invalid]="username?.invalid && username?.touched"
+    />
+    <label for="formUser">Usuario</label>
+    <div *ngIf="username?.invalid && username?.touched">
+      <small *ngIf="username?.errors?.['required']" class="text-danger"
+        >Usuario requerido</small
+      >
+      <small *ngIf="username?.errors?.['minlength']" class="text-danger"
+        >minimo 4 caracteres</small
+      >
+    </div>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-floating mb-4">
+    <input
+      type="password"
+      id="formPass"
+      class="form-control"
+      formControlName="password"
+      [class.is-invalid]="password?.invalid && password?.touched"
+    />
+    <label for="formPass">Contraseña</label>
+    <div *ngIf="password?.invalid && password?.touched">
+      <small *ngIf="password?.errors?.['required']" class="text-danger"
+        >Contraseña requerida</small
+      >
+      <small *ngIf="password?.errors?.['minlength']" class="text-danger"
+        >minimo 6 caracteres</small
+      >
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <button
+      type="button"
+      class="btn btn-primary btn-block mb-4"
+      [disabled]="!loginForm.valid"
+      (click)="onSubmit()"
+    >
+      Ingresar
+    </button>
+  </div>
+</form>
